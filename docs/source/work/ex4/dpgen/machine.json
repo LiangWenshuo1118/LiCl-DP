@@ -9,9 +9,9 @@
         "context_type": "LebesgueContext",
         "local_root" : "./",
         "remote_profile":{
-          "email": "1094671923@qq.com", 
-          "password": "liangws1118@dp", 
-          "program_id": 11250,
+          "email": "xxx", 
+          "password": "xxx", 
+          "program_id": xxx,
             "keep_backup":true,
             "input_data":{
                 "job_type": "container",
@@ -41,9 +41,9 @@
         "context_type": "LebesgueContext",
         "local_root" : "./",
         "remote_profile":{
-          "email": "1094671923@qq.com", 
-          "password": "liangws1118@dp", 
-          "program_id": 11250,
+          "email": "xxx", 
+          "password": "xxx", 
+          "program_id": xxx,
             "keep_backup":true,
             "input_data":{
               "job_type": "container",
@@ -73,9 +73,9 @@
         "context_type": "LebesgueContext",
         "local_root" : "./",
         "remote_profile":{
-          "email": "1094671923@qq.com", 
-          "password": "liangws1118@dp", 
-          "program_id": 11250,
+          "email": "xxx", 
+          "password": "xxx", 
+          "program_id": xxx,
             "keep_backup":true,
             "input_data":{
               "log_file": "task*/output",
