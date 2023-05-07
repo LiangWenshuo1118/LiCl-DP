@@ -1,2 +1,2 @@
 myst_parser
-dollarmath
+urllib3<2.0
