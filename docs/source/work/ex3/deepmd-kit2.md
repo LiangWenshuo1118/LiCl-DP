@@ -107,7 +107,7 @@ input.json包含了DP模型训练过程中所需的各种参数，定义和控�
         "sel":             FILL,                    # 填写提示：sel指定rcut内原子选定的邻居数。可以设置为"auto"，由软件自动确定。
         "neuron":          FILL,                    # 填写提示：此处neuron指定嵌入网络尺寸，通常设置为[20, 40, 80]
         "resnet_dt":       false,
-        "axis_neuron":     FILL,                    # axis_neuron指定嵌入子网络横向尺寸，通常≥4。
+        "axis_neuron":     FILL,                    # 填写提示：axis_neuron指定嵌入子网络横向尺寸，通常≥4。
         "seed":            1,
         "_comment":        "that's all"
     },
