@@ -10,8 +10,8 @@
    :maxdepth: 1
    :caption: 目录:
 
-   ./work/ex1/cmd_2.md
-   ./work/ex2/dft_2.md
-   ./work/ex3/deepmd-kit_2.md   
-   ./work/ex4/dpgen_2.md
-   ./work/ex5/dpmd_2.md
+   ./work/ex1/cmd2.md
+   ./work/ex2/dft2.md
+   ./work/ex3/deepmd-kit2.md   
+   ./work/ex4/dpgen2.md
+   ./work/ex5/dpmd2.md
