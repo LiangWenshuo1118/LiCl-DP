@@ -10,7 +10,7 @@
    :maxdepth: 1
    :caption: 目录:
 
-   ../../work.md
+   ./work.md
    ./work/ex1/cmd2.md
    ./work/ex2/dft2.md
    ./work/ex3/deepmd-kit2.md   
