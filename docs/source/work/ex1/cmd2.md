@@ -38,13 +38,13 @@ tar zxvf work.tar.gz
 
 # initialize simulation settings
 units           metal
-boundary        FILL
+boundary        __*FILL*__
 atom_style      FILL
 
 # define the simulation cell
 read_data       FILL
 
-group           FILL  type 1
+group           _FILL_  type 1
 group           FILL  type 2
 set             type 1 charge FILL
 set             type 2 charge FILL
