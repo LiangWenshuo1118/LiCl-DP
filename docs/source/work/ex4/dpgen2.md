@@ -112,7 +112,7 @@ ex4
                  "sel": "auto",                
                  "rcut_smth": 0.5,
                  "rcut": 7.0,
-                 "neuron": [20,40,80],
+                 "neuron": [25,50,100],
                  "resnet_dt": false,
                  "axis_neuron": 12,
                  "seed": 1
