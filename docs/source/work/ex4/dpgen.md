@@ -112,13 +112,13 @@ ex4
                  "sel": [128,128],                
                  "rcut_smth": 0.5,
                  "rcut": 7.0,
-                 "neuron": [20,40,80],
+                 "neuron": [25,50,100],
                  "resnet_dt": false,
                  "axis_neuron": 12,
                  "seed": 1
              },
              "fitting_net": {
-                 "neuron": [200,200,200],
+                 "neuron": [240,240,240],
                  "resnet_dt": true,
                  "seed": 1
              }
