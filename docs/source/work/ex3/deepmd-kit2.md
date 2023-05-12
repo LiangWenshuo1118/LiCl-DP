@@ -24,7 +24,7 @@ tar zxvf work.tar.gz
 - 01.train 包含使用 DeePMD-kit 训练模型的示例脚本，
 - 02.lmp 包含用于分子动力学模拟的 LAMMPS 示例脚本。
 
-本教程采用 DeePMD-kit(2.1.5)程序完成。
+本教程采用 DeePMD-kit(2.1.5)程序完成。使用Bohrium registry.dp.tech/dptech/dpgen:0.10.6 管理节点和 registry.dp.tech/dptech/deepmd-kit:2.1.5-cuda11.6 镜像。
 
 ## 作业 
 
