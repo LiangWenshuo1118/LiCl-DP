@@ -25,7 +25,7 @@ tar zxvf work.tar.gz
 - ave_rdf.py: 用于进一步处理lammps输出文件，绘制rdf图象的python脚本。
 - msd.py：用于进一步处理lammps输出文件，绘制msd图象和计算扩散性质的python脚本
 
-本教程采用 DeePMD-kit(2.1.5)软件包中预置的 LAMMSP 程序完成。Bohrium镜像：registry.dp.tech/dptech/deepmd-kit:2.1.5-cuda11.6
+本教程采用 DeePMD-kit(2.1.5)软件包中预置的 LAMMSP 程序完成。使用Bohrium registry.dp.tech/dptech/dpgen:0.10.6 管理节点和 registry.dp.tech/dptech/deepmd-kit:2.1.5-cuda11.6 镜像。
 
 ## 作业
 
