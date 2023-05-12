@@ -25,7 +25,7 @@ tar zxvf work.tar.gz
 - *.upf：包含了原子的赝势信息；
 - *.orb：包含了原子轨道的数值表示。
 
-本教程采用 ABACUS v3.1.0 完成。
+本教程采用 ABACUS v3.1.0 完成。 使用Bohrium registry.dp.tech/dptech/dpgen:0.10.6 管理节点和 registry.dp.tech/dptech/abacus:3.1.0 镜像。
 
 ## 作业
 
