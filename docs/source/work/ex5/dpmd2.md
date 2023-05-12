@@ -37,7 +37,7 @@ ex5
 
 - `in.licl*` 和 `licl.data` 是 LAMMPS 的输入文件
 
-本教程采用 DeePMD-kit(2.1.5)软件包中预置的 LAMMSP 程序完成。Bohrium镜像：registry.dp.tech/dptech/deepmd-kit:2.1.5-cuda11.6
+本教程采用 DeePMD-kit(2.1.5)软件包中预置的 LAMMSP 程序完成。使用Bohrium registry.dp.tech/dptech/dpgen:0.10.6 管理节点和 registry.dp.tech/dptech/deepmd-kit:2.1.5-cuda11.6 镜像。
 
 ## 作业
 
