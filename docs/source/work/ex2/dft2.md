@@ -43,30 +43,30 @@ tar zxvf work.tar.gz
 INPUT_PARAMETERS
 
 #Parameters (1.General)
-ntype                   FILL        # 填写提示：ntype指定原子种类的数量，这里有Li和Cl共2个原子种类
-symmetry                FILL        # 填写提示：symmetry指定是否使用晶体对称性，0表示不使用
-vdw_method              FILL        # 填写提示：vdw_method指定范德华力的计算方法，这里可以选择其中一种方法，如D3方法（d3_bj）
+ntype                   FILL        # 填写提示：ntype指定原子种类的数量
+symmetry                FILL        # 填写提示：symmetry指定是否使用晶体对称性
+vdw_method              FILL        # 填写提示：vdw_method指定范德华力的计算方法，这里可以选择其中一种方法
 
 #Parameters (2.Iteration)
-ecutwfc                 FILL        # 填写提示：ecutwfc指定平面波基组截断能，这里设为100 Ry
-scf_thr                 FILL        # 填写提示：scf_thr指定电荷密度的收敛阈值，这里设为1.0e-7 Ry
-scf_nmax                FILL        # 填写提示：scf_nmax指定自洽场迭代的最大步数，这里设为120
+ecutwfc                 FILL        # 填写提示：ecutwfc指定平面波基组截断能
+scf_thr                 FILL        # 填写提示：scf_thr指定电荷密度的收敛阈值
+scf_nmax                FILL        # 填写提示：scf_nmax指定自洽场迭代的最大步数
 
 #Parameters (3.Basis)
 basis_type              FILL        # 填写提示：basis_type指定基组类型，这里选择线性组合原子轨道（LCAO）                     
 
 #Parameters (4.Smearing)
 smearing_method         FILL        # 填写提示：smearing_method指定展宽方法，这里选择高斯展宽（gauss）
-smearing_sigma          FILL        # 填写提示：smearing_sigma指定展宽，这里设为0.002 Ry
+smearing_sigma          FILL        # 填写提示：smearing_sigma指定展宽
 
 #Parameters (5.Mixing)
 mixing_type             FILL        # 填写提示：mixing_type指定电荷密度混合方法，这里选择Pulay混合
 mixing_beta             FILL        # 填写提示：mixing_beta指定混合参数，这里设为0.4
 
 #Parameters (6.sfc)
-calculation             FILL        # 填写提示：calculation指定任务类型，这里设为scf（自洽计算）   
-cal_force               FILL        # 填写提示：cal_force指定是否计算原子受力，这里设为1表示计算
-cal_stress              FILL        # 填写提示：cal_stress指定是否计算应力，这里设为1表示计算
+calculation             FILL        # 填写提示：calculation指定任务类型，这里设为自洽计算   
+cal_force               FILL        # 填写提示：cal_force指定是否计算原子受力，这里选择计算
+cal_stress              FILL        # 填写提示：cal_stress指定是否计算应力，这里选择计算
 ```
 请结合填写提示，完成LiCl熔体SCF计算的INPUT文件。参数详细解释，请访问ABACUS手册的[INPUT完整参数列表](http://abacus.deepmodeling.com/en/latest/advanced/input_files/input-main.html)部分。
 
@@ -221,16 +221,16 @@ mixing_type	pulay
 mixing_beta	0.4            
 
 #Parameters (6.md)
-calculation     FILL            # 填写提示：calculation指定计算类型，这里选择md（分子动力学）
+calculation     FILL            # 填写提示：calculation指定计算类型，这里选择分子动力学
 cal_force       1              
 cal_stress      1              
 md_nstep        FILL            # 填写提示：md_nstep指定分子动力学模拟的总步数，设为500
-md_type         FILL            # 填写提示：md_type指定模拟类型，这里设为1选择NVT系综
-md_dt           FILL            # 填写提示：md_dt指定时间步长，设为1 fs
-md_tfirst       FILL            # 填写提示：md_tfirst指定目标温度，设为900 K
-md_restart      FILL            # 填写提示：md_restart指定是否为续算，设为0表示不是续算
-md_dumpfreq     FILL            # 填写提示：md_dumpfreq指定输出分子动力学信息的频率，设为1表示每一步都输出
-out_stru        FILL            # 填写提示：out_stru指定输出结构信息的选项，设为1表示输出
+md_type         FILL            # 填写提示：md_type指定模拟类型，这里选择NVT系综
+md_dt           FILL            # 填写提示：md_dt指定时间步长
+md_tfirst       FILL            # 填写提示：md_tfirst指定目标温度
+md_restart      FILL            # 填写提示：md_restart指定是否为续算，这里不是续算
+md_dumpfreq     FILL            # 填写提示：md_dumpfreq指定输出分子动力学信息的频率，这里每一步都输出
+out_stru        FILL            # 填写提示：out_stru指定输出结构信息的选项，这里输出
 ```
 INPUT文件定义了LiCl熔体的分子动力学（MD）模拟。与之前的LAMMPS MD一致，模拟在NVT系综下进行，时间步长1fs，温度为900 K。考虑到DFT计算成本相对较高，这里模拟时间为1ps。
 
