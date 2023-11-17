@@ -8,7 +8,7 @@
 
 project = 'LiCl-DP'
 copyright = '2023, 1'
-author = '1'
+author = 'Wenshuo Liang'
 release = '0.0'
 
 # -- General configuration ---------------------------------------------------
