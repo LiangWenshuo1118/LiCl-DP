@@ -1,2 +1,0 @@
-myst_parser
-urllib3<2.0
