@@ -22,13 +22,13 @@ tar zxvf work.tar.gz
 首先，使用 `tree` 命令查看 `work/ex4` 文件夹。
 
 ```sh
-$ tree ex4 -L 2  
+$ tree ex4_MLP_DP-GEN -L 2  
 ```
 
 你应该可以在屏幕上看到输出：
 
 ```sh
-ex4
+ex4_MLP_DP-GEN
 |-- abacus
 |   |-- Cl_ONCV_PBE-1.2.upf
 |   |-- Cl_gga_8au_100Ry_2s2p1d.orb
@@ -42,9 +42,9 @@ ex4
 - `param.json` 是运行当前任务的 DP-GEN 设置。
 - `machine.json` 是一个任务调度程序，其中设置了计算机环境和资源要求。
 
-本教程采用DeePMD-kit(2.1.5),AVACUS(3.1.0)和DP-GEN(0.11.0)程序完成。
+本教程采用DeePMD-kit(2.1.5),AVACUS(3.1.0)和DP-GEN(0.11.0)程序完成。使用Bohrium registry.dp.tech/dptech/dpgen:0.10.6 管理节点，镜像在machine.json文件中指定。
 
-## 练习
+## 作业
 
 运行过程包含一系列连续迭代，按顺序进行，例如将系统加热到特定温度。每次迭代由三个步骤组成：探索 (Exploration)，标记 (Labeling)和训练 (Training)。
 
@@ -82,7 +82,7 @@ ex4
 
 关键词描述：
 
-| 键词                  | 字段类型      | 描述                                                     |
+| 关键词                | 类型      | 描述                                                     |
 |-----------------------|--------------|----------------------------------------------------------|
 | "type_map"            | list         | 元素列表，这里是Li和Cl                                    |
 | "mass_map"            | list         | 原子质量列表                                              |
@@ -103,13 +103,13 @@ ex4
 与训练相关的内容如下：
 
 ```
-     "numb_models": 4,
+     "numb_models": FILL,
      "default_training_param": {
          "model": {
              "type_map": ["Li","Cl"],
              "descriptor": {
                  "type": "se_e2_a",
-                 "sel": [128,128],                
+                 "sel": "auto",                
                  "rcut_smth": 0.5,
                  "rcut": 7.0,
                  "neuron": [25,50,100],
@@ -159,7 +159,7 @@ ex4
 | "numb_models"             | int      | 在 00.train 中训练的模型数量。  |
 | "default_training_param"  | dict     | DeePMD-kit 的训练参数          |
 
-案例说明：
+填写提示：
 
 训练相关键指定训练任务的详细信息。`numb_models`指定要训练的模型数量。`default_training_param`指定了 DeePMD-kit 的训练参数。在这里，将训练 4 个 DP 模型。
 
@@ -172,14 +172,13 @@ DP-GEN 的训练部分由 DeePMD-kit 执行，因此此处的关键字与 DeePMD
 ```
      "model_devi_dt": 0.001,
      "model_devi_skip": 0,
-     "model_devi_f_trust_lo": 0.08,
-     "model_devi_f_trust_hi": 0.18,
-     "model_devi_merge_traj": true,
+     "model_devi_f_trust_lo": FILL,
+     "model_devi_f_trust_hi": FILL,
      "model_devi_clean_traj": false,
      "model_devi_jobs":  [
-        {"sys_idx": [0],"temps": [900,1000,1100,1200],"press": [0,10,100,1000,10000], "trj_freq": 10, "nsteps": 100000,"ensemble": "npt", "_idx": "00"},
-        {"sys_idx": [0],"temps": [900,1000,1100,1200],"press": [0,10,100,1000,10000], "trj_freq": 10, "nsteps": 100000,"ensemble": "npt", "_idx": "01"},
-        {"sys_idx": [0],"temps": [900,1000,1100,1200],"press": [0,10,100,1000,10000], "trj_freq": 10, "nsteps": 100000,"ensemble": "npt", "_idx": "02"}   
+        {"sys_idx": [0],"temps": [FILL,FILL,FILL,FILL],"press": [FILL,FILL,FILL,FILL,FILL], "trj_freq": FILL, "nsteps": FILL,"ensemble": "npt", "_idx": "00"},
+        {"sys_idx": [0],"temps": [FILL,FILL,FILL,FILL],"press": [FILL,FILL,FILL,FILL,FILL], "trj_freq": FILL, "nsteps": FILL,"ensemble": "npt", "_idx": "01"},
+        {"sys_idx": [0],"temps": [FILL,FILL,FILL,FILL],"press": [FILL,FILL,FILL,FILL,FILL], "trj_freq": FILL, "nsteps": FILL,"ensemble": "npt", "_idx": "02"}   
      ],
 ```
 
@@ -201,9 +200,9 @@ DP-GEN 的训练部分由 DeePMD-kit 执行，因此此处的关键字与 DeePMD
 | &nbsp;&nbsp;&nbsp;&nbsp;"nsteps"     | int          | 分子动力学运行步数                                 |
 | &nbsp;&nbsp;&nbsp;&nbsp;"ensembles"  | str          | 决定在 MD 中选择的集成算法，选项包括 “npt” ， “nvt”等. |
 
-案例说明
+填写提示：
 
-在在“model_devi_jobs”中设置了三次迭代。对于每次迭代，在不同的温度（900, 1000, 1100和1200 K）和压力条件（0, 0.1, 1, 10和100 GPa）下，使用npt系综和“sys_configs_prefix”和“sys_configs”指定的构型进行100000步模拟，时间步长为0.001 ps。我们选择保存 MD 轨迹文件，并将保存频率“trj_freq”设置为 10。如果轨迹中构型的“max_devi_f”介于 0.08 和 0.18 之间，DP-GEN 会将该结构视为候选结构。如果要保存 traj 文件夹的最近n次迭代，可以将“model_devi_clean_traj”设置为整数。
+在在“model_devi_jobs”中设置了三次迭代。对于每次迭代，在不同的温度（900, 1000, 1100和1200 K）和压力条件（0, 10, 100, 1000和10000 Bar）下，使用"npt"系综和“sys_configs_prefix”和“sys_configs”指定的构型进行100000步模拟，时间步长为0.001 ps。我们选择保存 MD 轨迹文件，并将保存频率“trj_freq”设置为 10。如果轨迹中构型的“max_devi_f”介于 0.08 和 0.18 之间，DP-GEN 会将该结构视为候选结构。如果要保存 traj 文件夹的最近n次迭代，可以将“model_devi_clean_traj”设置为整数。
 
 ** 标记 (Labeling)**
 
@@ -212,8 +211,8 @@ DP-GEN 的训练部分由 DeePMD-kit 执行，因此此处的关键字与 DeePMD
 ```
     "fp_style": "abacus",
     "shuffle_poscar": false,
-    "fp_task_max": 200,
-    "fp_task_min": 50,
+    "fp_task_max": FILL,
+    "fp_task_min": FILL,
     "fp_pp_path": "./abacus",
     "fp_pp_files": ["Li_ONCV_PBE-1.2.upf","Cl_ONCV_PBE-1.2.upf"],
     "fp_orb_files": ["Li_gga_8au_100Ry_4s1p.orb","Cl_gga_8au_100Ry_2s2p1d.orb"],
@@ -248,7 +247,7 @@ DP-GEN 的训练部分由 DeePMD-kit 执行，因此此处的关键字与 DeePMD
 | "k_points"        | List of Integer | 用于生成ABACUS KPT文件。                                                    |
 | "user_fp_params"  | dict            | 用于生成ABACUS INPUT文件。如果"user_fp_params"中指定了 kspacing，可以不设置"k_points"。   |
 
-案例说明：
+填写提示：
 
 标记相关键词指定标记任务的详细信息。 在这里，最少 50 个和最多 200 个结构将使用 ABACUS 代码进行标记，在每次迭代中，INPUT 文件依据“user_fp_params”生成，KPT文件依据 “k_points”生成。请注意，"fp_pp_files" 和 "fp_orb_files" 中元素的顺序应与 `type_map` 中的顺序相对应。
 
@@ -435,7 +434,7 @@ $ tree iter.000000/00.train -L 1
 |-- 001
 |-- 002
 |-- 003
-|-- data.init -> /data/work/ex3
+|-- data.init -> /data/work/ex3_MLP_DeePMD-kit
 |-- data.iters
 |-- graph.000.pb -> 000/frozen_model.pb
 |-- graph.001.pb -> 001/frozen_model.pb
@@ -478,10 +477,10 @@ $ tree iter.000000/00.train/000 -L 1
 $ tree iter.000000/01.model_devi -L 1
 ./iter.000000/01.model_devi/
 |-- confs
-|-- graph.000.pb -> /data/work/ex4/iter.000000/00.train/graph.000.pb
-|-- graph.001.pb -> /data/work/ex4/iter.000000/00.train/graph.001.pb
-|-- graph.002.pb -> /data/work/ex4/iter.000000/00.train/graph.002.pb
-|-- graph.003.pb -> /data/work/ex4/iter.000000/00.train/graph.003.pb
+|-- graph.000.pb -> /data/work/ex4_MLP_DP-GEN/iter.000000/00.train/graph.000.pb
+|-- graph.001.pb -> /data/work/ex4_MLP_DP-GEN/iter.000000/00.train/graph.001.pb
+|-- graph.002.pb -> /data/work/ex4_MLP_DP-GEN/iter.000000/00.train/graph.002.pb
+|-- graph.003.pb -> /data/work/ex4_MLP_DP-GEN/iter.000000/00.train/graph.003.pb
 |-- task.000.000000
 |-- task.000.000001
 |-- ...

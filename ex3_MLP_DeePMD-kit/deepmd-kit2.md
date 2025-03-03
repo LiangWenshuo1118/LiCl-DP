@@ -37,7 +37,7 @@ import dpdata
 import numpy as np
 
 #加载abacus/md格式数据
-data = dpdata.LabeledSystem('../../ex2/01.md', fmt = 'abacus/md')        
+data = dpdata.LabeledSystem('../../ex2_AIMD_ABACUS/01.md', fmt = 'abacus/md')        
 
 # 随机选择100个索引，用于生成验证集;其他的索引，用于生成测试集
 index_validation = np.random.choice(len(data),size=100,replace=False)    

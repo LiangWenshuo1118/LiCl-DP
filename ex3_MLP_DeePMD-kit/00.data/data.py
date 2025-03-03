@@ -1,7 +1,7 @@
 import dpdata 
 import numpy as np
 
-data = dpdata.LabeledSystem('../../ex2/01.md', fmt ='abacus/md')
+data = dpdata.LabeledSystem('../../ex2_AIMD_ABACUS/01.md', fmt ='abacus/md')
 
 # random choose 100 index for validation_data
 index_validation = np.random.choice(len(data),size=100,replace=False)     

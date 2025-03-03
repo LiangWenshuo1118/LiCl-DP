@@ -21,13 +21,13 @@ tar zxvf work.tar.gz
 首先，使用 `tree` 命令查看 `work/ex5` 文件夹。
 
 ```sh
-$ tree ex5 -L 2  
+$ tree ex5_MLMD_LAMMPS -L 2  
 ```
 
 你应该可以在屏幕上看到输出：
 
 ```sh
-ex5
+ex5_MLMD_LAMMPS
 |-- 01.nvt
 |   `-- in.licl_nvt
 `-- 00.npt
